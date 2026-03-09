@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TOON Format Specification</title>
+
+<style>
+
+:root {
+  color-scheme: light dark;
+  --bg:#ffffff;
+  --text:#111;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --accent:#2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+:root{
+  --bg:#0b0c0f;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --border:#1f2937;
+  --accent:#60a5fa;
+}
+}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+h2{
+margin-top:40px;
+}
+
+p{
+color:var(--text);
+}
+
+code,pre{
+background:#11111110;
+padding:6px 8px;
+border-radius:6px;
+font-family:ui-monospace,monospace;
+}
+
+pre{
+padding:14px;
+overflow:auto;
+border:1px solid var(--border);
+}
+
+.section{
+margin-top:30px;
+}
+
+.small{
+color:var(--muted);
+font-size:14px;
+}
+
+footer{
+margin-top:50px;
+padding-top:20px;
+border-top:1px solid var(--border);
+font-size:14px;
+color:var(--muted);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>TOON Format Specification</h1>
+
+<p class="small">
+TOON (Token Optimized Object Notation) is a compact representation of structured data designed to reduce token usage in Large Language Model (LLM) prompts.
+</p>
+
+<div class="section">
+
+<h2>Overview</h2>
+
+<p>
+JSON is widely used for structured data but can be verbose when used in prompts for AI models.  
+TOON provides a more compact format that keeps structure while reducing unnecessary characters and tokens.
+</p>
+
+<p>
+TOON is designed to be:
+</p>
+
+<ul>
+<li>Human readable</li>
+<li>Compact</li>
+<li>LLM friendly</li>
+<li>Easily convertible to and from JSON</li>
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Basic Object Example</h2>
+
+<h3>JSON</h3>
+
+<pre>
+{
+  "user": {
+    "id": 101,
+    "name": "Alice",
+    "email": "alice@example.com"
+  }
+}
+</pre>
+
+<h3>TOON</h3>
+
+<pre>
+user:
+  id: 101
+  name: Alice
+  email: alice@example.com
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>Arrays</h2>
+
+<h3>JSON</h3>
+
+<pre>
+{
+  "roles": ["admin", "editor"]
+}
+</pre>
+
+<h3>TOON</h3>
+
+<pre>
+roles:
+  [admin, editor]
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>Table Arrays (Optimized)</h2>
+
+TOON introduces a compact table format for arrays of objects.
+
+<h3>JSON</h3>
+
+<pre>
+{
+  "users":[
+    {"id":1,"name":"Alice","role":"admin"},
+    {"id":2,"name":"Bob","role":"editor"}
+  ]
+}
+</pre>
+
+<h3>TOON</h3>
+
+<pre>
+users[2]{id,name,role}:
+1,Alice,admin
+2,Bob,editor
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>Design Goals</h2>
+
+<ul>
+
+<li>Reduce token usage in AI prompts</li>
+
+<li>Maintain structural readability</li>
+
+<li>Allow deterministic conversion to JSON</li>
+
+<li>Provide compact representations for repeated structures</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Typical Use Cases</h2>
+
+<ul>
+
+<li>AI prompt optimization</li>
+
+<li>Reducing OpenAI / LLM API costs</li>
+
+<li>Compact structured context in prompts</li>
+
+<li>LLM pipelines and agent systems</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Compatibility</h2>
+
+<p>
+TOON is designed to be easily convertible to JSON.  
+Tools like <strong>TOON Toolkit</strong> allow instant conversion between formats.
+</p>
+
+</div>
+
+<footer>
+
+<p>
+TOON Toolkit — JSON ↔ TOON Converter  
+Open format specification.
+</p>
+
+</footer>
+
+</div>
+
+</body>
+</html>
