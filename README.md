@@ -2,6 +2,8 @@
 
 **JSON ↔ TOON Converter and LLM Token Optimizer**
 
+[Chrome Extension Link](https://chromewebstore.google.com/detail/toon-toolkit/lnaeffdifoaikppifjlheoaacefdhijg)
+
 TOON Toolkit is a Chrome extension that helps developers **reduce token usage in AI prompts** by converting verbose JSON structures into a compact TOON format.
 
 > **TOON (Token Optimized Object Notation)** is a lightweight representation of structured data designed to improve efficiency when working with Large Language Models (LLMs).
